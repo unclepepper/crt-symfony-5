@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order{% endblock %}
+
+{% block body %}
+  <h2 class="display-6 text-center mb-4"><i>Заказ</i></h2>
+  
+    {% if total == 0 %}
+            {% else %}
+
+            <div class="table-responsive mt-5">
+           
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th style="width: 34%;">Наименование</th>
+                            <th style="width: 22%;">Количество</th>
+                            <th style="width: 22%;">Цена</th>
+                            <th style="width: 22%;">Сумма</th>
+                        </tr>
+                    </thead>
+
+                    
+                     {% for basket in baskets %}
+                     
+                    <tbody>
+                         <tr>
+                            <th scope="row" class="text-start">{{basket.getProductId().name}}</th>
+                            <td><a href="#" class="text-decoration-none text-dark">{{basket.quantity}} шт.</a></td>
+                            <td><a href="#" class="text-decoration-none text-dark">{{basket.priceOne}} р</a></td>
+                            <td><a href="#" class="text-decoration-none text-dark">{{basket.priceTotal}} р</a></td> 
+                        </tr>
+                    </tbody> 
+                    {% endfor %}
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="text-start">ИТОГО:</th>
+                            <td></td>
+                            <td></td>
+                            <td>на сумму: <b> {{total}} руб.</b></td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+                <div class="d-flex justify-content-end mt-5">
+                   
+                </div>
+            </div> 
+            <h5 class="text-left mb-4"><i>Вы заказали <b>{{count}}</b> позиций, на сумму <b>{{total}}</b> рубл.</i></h5>
+          {% endif %}
+          <h5 class="text-left mb-4"><i>Введите пожалуйста свое имя и телефон</i></h5>
+          <form action="{{ path('orderAdd') }}" method="post">
+            <label for="inputEmail" class="mb-2">Имя</label>
+            <input type="name" name="client_name" class="form-control mb-3"/> 
+
+            <label for="inputEmail" class="mb-2">Телефон</label>
+            <input type="phone" name="client_phone" class="form-control mb-3"/> 
+             <button type="submit" class="btn btn-lg btn-primary">Оформить заказ</button> 
+            </form>      
+      
+ {# <a href="{{ path('orderAdd') }}" class="btn btn-primary">Оформить заказ</a> #}
+{% endblock %}

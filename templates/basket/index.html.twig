@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+
+   
+      
+             <h2 class="display-6 text-center mb-4"><i>{{title}}</i></h2>
+           
+                {% for basket in baskets %}
+                
+            <div class="container">
+    
+    <h2 class="mb-5 text-center" >Пицца<small class="text-muted fw-light">-{{basket.getProductId().name}}</small></h2>
+
+    <div class="row row-cols-1 row-cols-md-4 ">
+        <div class="col-sm-4 text-start ">
+            <img src="{{ asset(basket.getProductId().image)}}" width="100%" class="mb-3" style="border-radius:5px;">
+            <form action="{{ path('changeBasket') }}" method="post" class="row row-cols-2 d-flex justify-content-around">
+                <div class="number">
+                    <button class="btn btn-outline-primary number-minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
+                    <input type="number" min="0" value="{{basket.quantity}}" name="quantity" id="quantity" readonly>
+                    <button class="btn btn-outline-primary number-plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
+                </div>
+                    <input type="hidden" name="product_id" id="product_id" value="{{basket.id}}"/>
+                    <input type="hidden" name="price_product" id="price_product" value="{{ basket.priceOne }}"/>
+                    <button type="submit" class="col col-sm-7 btn btn-lg btn-outline-primary">Изменить</button>
+                     
+            </form>
+        </div>
+        <div class="col-sm-5 text-center">
+            <p>
+                {{basket.getProductId().description}}
+            </p>
+        </div>
+        <div class="col-sm-3 text-end">
+            <ul class="col list-unstyled text-muat">
+                <li><strong>Количество: </strong> {{basket.quantity}} шт.</li>
+            </ul>
+            <ul class="col list-unstyled text-muat">
+                <li><strong>Цена: </strong> {{basket.priceOne}} руб.</li>
+            </ul>
+            
+             <ul class="col list-unstyled text-muat"> 
+                <li><strong>Сумма: </strong> {{basket.priceTotal}} руб.</li>
+            </ul>
+            <ul class="col list-unstyled text-muat">
+                <li><a href="deleteBasket/{{basket.id}}" class="btn btn-primary">Удалить</a></li>
+            </ul>
+            
+        </div>
+     
+    </div>
+    
+       
+    </div>
+
+{% endfor %}
+        {% if total == 0 %}
+            {% else %}
+
+            <div class="table-responsive mt-5">
+           
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th style="width: 34%;">Наименование</th>
+                            <th style="width: 22%;">Количество</th>
+                            <th style="width: 22%;">Цена</th>
+                            <th style="width: 22%;">Сумма</th>
+                        </tr>
+                    </thead>
+
+                    
+                     {% for basket in baskets %}
+                     
+                    <tbody>
+                         <tr>
+                            <th scope="row" class="text-start">{{basket.getProductId().name}}</th>
+                            <td><a href="#" class="text-decoration-none text-dark">{{basket.quantity}} шт.</a></td>
+                            <td><a href="#" class="text-decoration-none text-dark">{{basket.priceOne}} р</a></td>
+                            <td><a href="#" class="text-decoration-none text-dark">{{basket.priceTotal}} р</a></td> 
+                        </tr>
+                    </tbody> 
+                    {% endfor %}
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="text-start">ИТОГО:</th>
+                            <td></td>
+                            <td></td>
+                            <td> <b> {{total}} руб.</b></td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+                <div class="d-flex justify-content-end mt-5">
+                    <a href="{{ path('order') }}" class="btn btn-primary">Перейти к оформлению заказа</a>
+                </div>
+            </div> 
+          {% endif %}
+           
+{% endblock %}

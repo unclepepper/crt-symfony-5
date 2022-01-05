@@ -1,8 +1,20 @@
 ## Задание #5 - API
 СРОК СДАЧИ - 10 Января до 7:00 по МСК
+### Для запуска проекта выполнить следующие команды:
+
+* docker-compose up -d --build
+* docker-compose exec app composer install
+### Admin:
+* email: admin@admin.ru
+* password: admin@admin.ru
+### User:
+* email: user@user.ru
+* password: user@user.ru
+Dump bd - db/backup.sql (подгружается автоматически)
+
 ### 1. Добавить в проект новый бандл
 В проект из задания 4 - Сайт для онлайн-заказа пиццы - встроить Api
-Platform: [Ссылка на api](https://api-platform.com/) 
+[Platform:](https://api-platform.com/) 
 Настройки можно оставить штатные, формат ответа - по умолчанию
 ### 2. Реализовать API - Базовый уровень
 В проекте должны быть эндпоинты - Контроллеры использовать
