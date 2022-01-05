@@ -40,3 +40,4 @@ Authentication - Продвинутый уровень
 Встроить в проект JWT Authentication -
 https://api-platform.com/docs/core/jwt/ и обеспечить проверку доступа через
 токены
+### 4. Добавить тесты доступности эндпоинтов

@@ -1,4 +1,7 @@
 api_platform:
+    title: 'CRT-SYMFONY-5'
+    description: 'My homework five - api'
+    version: 1.0.0
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:
