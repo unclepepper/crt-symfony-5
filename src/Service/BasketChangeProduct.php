@@ -10,13 +10,11 @@ use App\Entity\Product;
 
 class BasketChangeProduct
 {
-    private BasketRepository $doctrine;
-    private EntityManagerInterface $entityManager;
+    
 
-    public function __construct(BasketRepository $doctrine, EntityManagerInterface $entityManager)
+    public function __construct(private BasketRepository $doctrine, private EntityManagerInterface $entityManager)
     {
-        $this->doctrine = $doctrine;
-        $this->entityManager = $entityManager;
+        
     }
     public function changeBasket(Request $request):void
     {
