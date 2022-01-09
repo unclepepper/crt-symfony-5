@@ -1,9 +1,14 @@
 ## Задание #5 - API
 СРОК СДАЧИ - 10 Января до 7:00 по МСК
+Доработал корзину, страницу заказа.
+
 ### Для запуска проекта выполнить следующие команды:
 
 * docker-compose up -d --build
 * docker-compose exec app composer install
+* Dump bd - db/backup.sql (загружается автоматически)
+* docker-compose exec app bin/console messenger:consume async -vv (для запуска RabbitMQ)
+
 ### Admin:
 * email: admin@admin.ru
 * password: admin@admin.ru
