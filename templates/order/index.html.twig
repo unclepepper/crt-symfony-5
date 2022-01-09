@@ -13,7 +13,7 @@
                     <a href="{{ path('buy', {id: order.id})}}" class="btn btn-primary">Оплатить</a>
                 {% else %}
                     <h5 class="text-left mb-4"><i>Ваш заказ на сумму <b>{{total}}</b> рублей <b>оплачен!</b> Спасибо за покупку!</i></h5>
-                    <a href="{{ path('index')}}" class="btn btn-primary">На главную</a>
+                    {# <a href="{{ path('index')}}" class="btn btn-primary">На главную</a> #}
                 {% endif %}    
             {% endfor %}
           {% else %}
@@ -62,10 +62,10 @@
                 <h5 class="text-left mb-4"><i>Введите пожалуйста свое имя и телефон</i></h5>
                 <form action="{{ path('orderAdd') }}" method="post">
                 <label for="inputEmail" class="mb-2">Имя</label>
-                <input type="name" name="client_name" class="form-control mb-3"/> 
+                <input type="name" name="client_name" class="form-control mb-3" required autofocus /> 
 
                 <label for="inputEmail" class="mb-2">Телефон</label>
-                <input type="phone" name="client_phone" class="form-control mb-3"/> 
+                <input type="phone" name="client_phone" class="form-control mb-3" required /> 
                 <button type="submit" class="btn btn-lg btn-primary">Оформить заказ</button> 
                 </form>
         {% endif %}      

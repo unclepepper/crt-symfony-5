@@ -74,6 +74,6 @@ class ProductController extends AbstractController
     {
         $order = $orderRepository->find($id);
         $bus->dispatch(new orderMessage($order->getId(), []));
-        return $this->redirectToRoute('order');
+        return $this->redirectToRoute('order', ['id' => $id]);
     }
 }
