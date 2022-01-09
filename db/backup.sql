@@ -22,11 +22,11 @@ SET row_security = off;
 
 CREATE FUNCTION public.notify_messenger_messages() RETURNS trigger
     LANGUAGE plpgsql
-    AS $$
-            BEGIN
-                PERFORM pg_notify('messenger_messages', NEW.queue_name::text);
-                RETURN NEW;
-            END;
+    AS $$
+            BEGIN
+                PERFORM pg_notify('messenger_messages', NEW.queue_name::text);
+                RETURN NEW;
+            END;
         $$;
 
 
@@ -228,7 +228,6 @@ ALTER TABLE ONLY public.messenger_messages ALTER COLUMN id SET DEFAULT nextval('
 --
 
 COPY public.basket (id, quantity, price_one, price_total, product_id_id, order_id_id) FROM stdin;
-80	1	520	520	4	\N
 \.
 
 
@@ -263,7 +262,6 @@ COPY public.messenger_messages (id, body, headers, queue_name, created_at, avail
 --
 
 COPY public."order" (id, client_name, client_phone, is_pay) FROM stdin;
-59	nikokay	9222671646	t
 \.
 
 
@@ -272,7 +270,6 @@ COPY public."order" (id, client_name, client_phone, is_pay) FROM stdin;
 --
 
 COPY public.order_basket (order_id, basket_id) FROM stdin;
-59	80
 \.
 
 
@@ -304,7 +301,7 @@ COPY public."user" (id, email, roles, password) FROM stdin;
 -- Name: basket_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.basket_id_seq', 80, true);
+SELECT pg_catalog.setval('public.basket_id_seq', 81, true);
 
 
 --
@@ -318,7 +315,7 @@ SELECT pg_catalog.setval('public.messenger_messages_id_seq', 1, false);
 -- Name: order_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.order_id_seq', 59, true);
+SELECT pg_catalog.setval('public.order_id_seq', 61, true);
 
 
 --
