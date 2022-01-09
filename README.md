@@ -2,19 +2,27 @@
 СРОК СДАЧИ - 10 Января до 7:00 по МСК
 
 #### По crt-symfony-4 выполнено следующее:
-* Доработал корзину, страницу заказа, иммитация оплаты через события RabbitMQ
+* Доработал корзину, 
+* страницу заказа, иммитация оплаты (отправляется в очередь)
 * Иммитация оплаты через события RabbitMQ
 * Не выполнены задания по тестам
 
 #### По crt-symfony-5 выполнено следующее:
-* 
+* Установлена api-platform
+[Api](https://localhost/api)
+
 
 ### Для запуска проекта выполнить следующие команды:
 
 * docker-compose up -d --build
 * docker-compose exec app composer install
 * Dump bd - db/backup.sql (загружается автоматически)
-* docker-compose exec app bin/console messenger:consume async -vv (для запуска RabbitMQ)
+* docker-compose exec app bin/console messenger:consume async -vv (для запуска  обработки очереди оплаты)
+* Сервис [RabbitMQ](http://localhost:15672)
+### RabbitMQ guest:
+* login: guest
+* password: guest
+
 
 ### Admin:
 * email: admin@admin.ru
