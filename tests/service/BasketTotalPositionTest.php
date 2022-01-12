@@ -1,9 +1,7 @@
 <?php
 namespace App\Service;
 
-
 use App\Repository\BasketRepository;
-
 
 class BasketTotalPosition
 {
